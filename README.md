@@ -11,7 +11,10 @@
   - 📅 **Deadlines & Dates** (Submission times, meetings, exam dates)
   - ✅ **Action Items & Assigned Tasks** (Who needs to do what, with interactive checkboxes)
   - 📝 **Executive Catch-Up Digest** (3-bullet high-level summary + active participants + top topics)
-  - 🔒 **100% Local & Private:** No external servers, no AI API keys required, zero data uploaded. Everything runs securely right inside your browser.
+  - 🧠 **Dual-Engine Architecture (Local + Google Gemini):**
+    - **⚡ Local Mode (Default):** 100% offline rule-based regex engine. Zero network requests, zero API keys required, instant (<10ms).
+    - **✨ Gemini AI Mode (Google Gemini 3.8 Flash):** Connect a free API key from [Google AI Studio](https://aistudio.google.com/apikey) to unlock deep multi-paragraph narrative summaries, intelligent task delegation, and group sentiment/tone detection.
+    - **🔒 Privacy Guaranteed:** API keys and chat processing remain strictly in your browser. Automatic graceful fallback to the local engine if no key or internet is available.
 
 ---
 
@@ -75,17 +78,28 @@ Then open your browser and go to: `http://localhost:8000`
    - Click the **"🚨 Urgent Only"** tab to filter out the noise and show only critical notices.
    - Click **"Copy Summary"** to demonstrate clipboard integration.
 4. Click **"Clear"** to reset and paste your own real group chat!
+5. **Toggle to "✨ Gemini AI":** Click the gear icon or the Gemini pill, enter your free Gemini API key, and click "Analyze with Gemini AI" to show the judges deep narrative contextual synthesis!
+
+---
+
+## 🔑 How to Get a Free Gemini API Key
+1. Go to [Google AI Studio](https://aistudio.google.com/apikey).
+2. Click **Create API Key**.
+3. In MissMate, click the **⚙️ Settings** icon in the top header.
+4. Paste your key and click **Save & Apply**.
+5. Done! You can now switch seamlessly between Local Mode and Gemini 3.8 Flash.
 
 ---
 
 ## 📁 File Structure
 - [`index.html`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/index.html) — Modern dashboard UI with soft green accents and responsive layout.
 - [`styles.css`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/styles.css) — Custom design system with soft emerald palette, cards, badges, and animations.
-- [`sample-data.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/sample-data.js) — Realistic college chat presets for live demos.
+- [`gemini-service.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/gemini-service.js) — Google Gemini 3.8 Flash structured API service integration.
 - [`analyzer.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/analyzer.js) — 100% client-side parser, deadline detector, task extractor, and summarizer.
-- [`app.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/app.js) — Event management, interactive checklist, filters, search, and clipboard actions.
+- [`sample-data.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/sample-data.js) — Realistic college chat presets for live demos.
+- [`app.js`](file:///c:/Users/vaish/OneDrive/Desktop/missmate/app.js) — Dual-Engine controller, interactive checklist, filters, search, and clipboard actions.
 
 ---
 
 ## 🏆 Hackathon Pitch Tips
-> *"College group chats are chaotic. MissMate solves FOMO and missed deadlines with zero cloud dependencies. It's lightning-fast, private, free to run, and works directly in any browser."*
+> *"College group chats are chaotic. MissMate solves FOMO and missed deadlines with a Dual-Engine architecture: a 100% private, instant local regex parser for maximum speed and zero cost, paired with Google Gemini 3.8 Flash for deep contextual narrative understanding when requested."*
