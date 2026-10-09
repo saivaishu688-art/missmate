@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MissMate — "What Did I Miss?" | Group Chat Catch-Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-icon">
+          <!-- Sparkle / Chat Leaf SVG Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            <path d="M12 7v4"></path>
+            <path d="M10 9h4"></path>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>MissMate</h1>
+          <span class="logo-subtitle">"What Did I Miss?" Catch-Up Engine</span>
+        </div>
+      </div>
+
+      <div class="privacy-badge">
+        <span class="pulse-dot"></span>
+        100% Local • Private in Browser
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- Hero Title -->
+    <section class="hero-section">
+      <span class="hero-tag">🎓 Student Group Chat Digest</span>
+      <h2 class="hero-title">Woke up to <span>150+ unread messages?</span></h2>
+      <p class="hero-subtitle">
+        MissMate extracts actionable deadlines, delegated tasks, and critical announcements from your messy college group chats in seconds.
+      </p>
+    </section>
+
+    <!-- Paste & Input Section Card -->
+    <section class="card input-card">
+      <div class="card-header-bar">
+        <div class="card-title-group">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Paste Chat Messages
+          </h3>
+          <p class="card-desc">Supports WhatsApp, Discord, Slack, Telegram exports, or simple "Name: message" lines.</p>
+        </div>
+
+        <!-- Quick Demo Presets -->
+        <div class="preset-buttons">
+          <span class="preset-label">Try Demo:</span>
+          <button type="button" class="btn-preset" data-preset="cs_project">💻 CS Project</button>
+          <button type="button" class="btn-preset" data-preset="fest_committee">🎪 College Fest</button>
+          <button type="button" class="btn-preset" data-preset="exam_prep">📚 Calculus Exam</button>
+        </div>
+      </div>
+
+      <div class="textarea-wrapper">
+        <textarea 
+          id="chatInput" 
+          class="chat-input" 
+          placeholder="Paste your unread group chat here... Example:&#10;[10/10/24, 2:15 PM] Alex: Hey guys, the project deadline moved to Friday 11:59 PM!&#10;[10/10/24, 2:16 PM] Priya: @David please finish the REST APIs by tomorrow at 6 PM.&#10;[10/10/24, 2:18 PM] David: I will handle the backend endpoints.&#10;&#10;Or click 'Load Demo Chat' below to test immediately!"
+        ></textarea>
+      </div>
+
+      <div class="input-actions-bar">
+        <div class="input-meta-info">
+          <span id="lineCount">0 lines</span>
+          <span>•</span>
+          <span id="charCount">0 characters</span>
+        </div>
+
+        <div class="button-group">
+          <button type="button" id="btnClear" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Clear
+          </button>
+          <button type="button" id="btnDemo" class="btn btn-subtle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Load Demo Chat
+          </button>
+          <button type="button" id="btnAnalyze" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+            Analyze Messages
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Dashboard Section (Populated on Analyze) -->
+    <div id="resultsDashboard" class="results-dashboard">
+
+      <!-- High-Level Stats Cards Row -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon icon-emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statTotalMessages">0</span>
+            <span class="stat-label">Total Messages</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statUrgent">0</span>
+            <span class="stat-label">Urgent Alerts</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statActionItems">0</span>
+            <span class="stat-label">Action Items</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-value" id="statDeadlines">0</span>
+            <span class="stat-label">Deadlines & Dates</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Catch-Up Summary Card -->
+      <section class="summary-card">
+        <div class="summary-header">
+          <h3>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Executive Catch-Up Summary
+          </h3>
+          <div class="summary-meta-badges">
+            <span class="badge badge-general" id="summaryTimeSaved">⏱️ ~3 mins reading saved</span>
+            <button type="button" id="btnCopySummary" class="btn btn-outline btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Summary
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Bullet Catch-up Digest -->
+        <ul class="digest-list">
+          <li class="digest-item">
+            <div class="digest-bullet bullet-primary">1</div>
+            <div class="digest-content">
+              <strong>Main Focus</strong>
+              <p id="digestMainFocus">Project coordination and upcoming milestones.</p>
+            </div>
+          </li>
+          <li class="digest-item">
+            <div class="digest-bullet bullet-alert">2</div>
+            <div class="digest-content">
+              <strong>Critical Alert / Nearest Deadline</strong>
+              <p id="digestCriticalNotice">Review flagged urgent messages below.</p>
+            </div>
+          </li>
+          <li class="digest-item">
+            <div class="digest-bullet bullet-action">3</div>
+            <div class="digest-content">
+              <strong>Next Steps & Decisions</strong>
+              <p id="digestNextSteps">Active action items assigned across team members.</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Keywords & Participants Footer -->
+        <div class="summary-extra-bar">
+          <div class="topic-pills">
+            <span class="pill-title">Top Topics:</span>
+            <div id="topicPillsContainer">
+              <!-- Dynamically populated chips -->
+            </div>
+          </div>
+
+          <div class="participant-pills">
+            <span class="pill-title">Active Members:</span>
+            <div id="participantPillsContainer">
+              <!-- Dynamically populated pills -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two Column Layout: Action Items & Deadlines -->
+      <div class="detail-grid">
+
+        <!-- Column A: Action Items Checklist -->
+        <div class="section-box">
+          <div class="section-header">
+            <div class="section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--action-text);">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              </svg>
+              Action Items & Tasks
+              <span class="section-badge-counter" id="badgeActionCount">0</span>
+            </div>
+            <button type="button" id="btnCopyTasks" class="btn btn-outline btn-sm">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Tasks
+            </button>
+          </div>
+
+          <div id="actionItemsList" class="action-items-list">
+            <!-- Dynamically populated action items -->
+          </div>
+        </div>
+
+        <!-- Column B: Deadlines, Dates & Schedule -->
+        <div class="section-box">
+          <div class="section-header">
+            <div class="section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--deadline-text);">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Deadlines & Important Dates
+              <span class="section-badge-counter" id="badgeDeadlineCount">0</span>
+            </div>
+          </div>
+
+          <div id="deadlinesList" class="deadlines-list">
+            <!-- Dynamically populated deadlines -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Priority Message Feed Section -->
+      <section class="card messages-feed-card">
+        <div class="feed-header-controls">
+          <div class="card-title-group">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              Prioritized Message Stream
+            </h3>
+            <p class="card-desc">Messages classified by priority with sender context.</p>
+          </div>
+
+          <div class="filter-tabs">
+            <button type="button" class="filter-tab active" data-filter="all">All</button>
+            <button type="button" class="filter-tab" data-filter="urgent">🚨 Urgent Only</button>
+            <button type="button" class="filter-tab" data-filter="important">📌 Actionable</button>
+            <button type="button" class="filter-tab" data-filter="general">💬 General</button>
+          </div>
+
+          <div class="search-input-box">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="feedSearch" class="search-input" placeholder="Search in messages...">
+          </div>
+        </div>
+
+        <div id="messagesList" class="messages-list">
+          <!-- Dynamically populated messages -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>MissMate — <strong>"What Did I Miss?"</strong> • Privacy-first student group chat digest • 100% Client-side</p>
+    </footer>
+
+  </main>
+
+  <!-- Load Modules -->
+  <script src="sample-data.js"></script>
+  <script src="analyzer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
